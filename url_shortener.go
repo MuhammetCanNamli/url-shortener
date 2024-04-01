@@ -32,7 +32,13 @@ func shortenURL(w http.ResponseWriter, r *http.Request) {
 }
 
 func redirectURL(w http.ResponseWriter, r *http.Request) {
-
+	shortURL := mux.Vars(r)["shortURL"]
+	originalURL, ok := urlMap[shortURL]
+	if !ok {
+		http.NotFound(w, r)
+		return
+	}
+	http.Redirect(w, r, originalURL, http.StatusFound)
 }
 
 // hashURL converts a URL to a hash using a hashing algorithm.
