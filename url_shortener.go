@@ -35,9 +35,16 @@ func redirectURL(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// hashURL converts a URL to a hash using a hashing algorithm.
 func hashURL(url string) string {
+
+	// Creating a hasher to use the MD5 hashing algorithm.
 	hasher := md5.New()
+
+	// Writing the bytes of the URL to the hasher.
 	hasher.Write([]byte(url))
+
+	// Calculating and converting the hash.
 	hashBytes := hasher.Sum(nil)
 	return hex.EncodeToString(hashBytes)
 }
