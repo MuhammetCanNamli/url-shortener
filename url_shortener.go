@@ -1,6 +1,8 @@
 package main
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"fmt"
 	"net/http"
 
@@ -33,6 +35,9 @@ func redirectURL(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func hashURL(url string) {
-
+func hashURL(url string) string {
+	hasher := md5.New()
+	hasher.Write([]byte(url))
+	hashBytes := hasher.Sum(nil)
+	return hex.EncodeToString(hashBytes)
 }
