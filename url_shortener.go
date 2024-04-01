@@ -19,6 +19,12 @@ func main() {
 	// Creating a new router.
 	r := mux.NewRouter()
 
+	// POST request to "/shorten" path is fulfilled and shortenURL function is called.
+	r.HandleFunc("/shorten", shortenURL).Methods("POST")
+
+	// GET request is made to the path "/{shortURL}" and the redirectURL function is called.
+	r.HandleFunc("/{shortUTL}", redirectURL).Methods("GET")
+
 	// Assigning the router for the main root directory.
 	http.Handle("/", r)
 
