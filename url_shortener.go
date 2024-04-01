@@ -27,14 +27,22 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 }
 
+// shortenURL shortens a long incoming URL and returns the short URL.
 func shortenURL(w http.ResponseWriter, r *http.Request) {
+
+	// Getting the original URL from the form data.
 	originalURL := r.FormValue("url")
 
+	//Creating a hash to shorten the URL.
 	hash := hashURL(originalURL)
+
+	// A short URL is created by taking the first 6 characters of the hash.
 	shortURL := hash[:6]
 
+	// Matching the generated short URL with the original URL.
 	urlMap[shortURL] = originalURL
 
+	// Returning the short URL to the user.
 	fmt.Fprintf(w, "Shortened URL: http://localhost:8080/%s", shortURL)
 }
 
