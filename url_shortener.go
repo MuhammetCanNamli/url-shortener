@@ -24,3 +24,15 @@ func main() {
 	fmt.Println("Server is listening on port 8080...")
 	http.ListenAndServe(":8080", nil)
 }
+
+func shortenURL(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func redirectURL(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func hashURL(url string) {
+
+}
