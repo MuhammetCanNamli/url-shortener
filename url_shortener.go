@@ -23,7 +23,7 @@ func main() {
 	r.HandleFunc("/shorten", shortenURL).Methods("POST")
 
 	// GET request is made to the path "/{shortURL}" and the redirectURL function is called.
-	r.HandleFunc("/{shortUTL}", redirectURL).Methods("GET")
+	r.HandleFunc("/{shortURL}", redirectURL).Methods("GET")
 
 	// Assigning the router for the main root directory.
 	http.Handle("/", r)
