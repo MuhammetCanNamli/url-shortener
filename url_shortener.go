@@ -31,13 +31,21 @@ func shortenURL(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// redirectURL redirects a short URL to the original URL.
 func redirectURL(w http.ResponseWriter, r *http.Request) {
+
+	// Getting the short URL from the URL.
 	shortURL := mux.Vars(r)["shortURL"]
+
+	// Getting the original URL matched to the short URL.
 	originalURL, ok := urlMap[shortURL]
 	if !ok {
+		// If no match is found, a 404 Error is returned.
 		http.NotFound(w, r)
 		return
 	}
+
+	// The user is redirected from the short URL to the original URL.
 	http.Redirect(w, r, originalURL, http.StatusFound)
 }
 
