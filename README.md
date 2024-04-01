@@ -14,7 +14,12 @@ URL shortener coded using Golang
 
 ### Executing program
 
-The project can be run via terminal/cmd.
+* First, the Go module needs to be installed.
+```
+go mod init urlshortener
+go get github.com/gorilla/mux
+```
+* Then, the project can be run via terminal/cmd.
 ```
 go build url_shortener.go
 main
