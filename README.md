@@ -28,13 +28,17 @@ or
 ```
 go run url_shortener.go
 ```
+* After the localhost server is started, we can shorten the URL we want to shorten via terminal/cmd with the following code:
+```
+curl -X POST -d "url=link" http://localhost:8080/shorten
+```
+* Finally, we can copy the URL created on the terminal/cmd screen and use it through the web browser.
+</br>
 
 ## Project Features
 
 * The project is a simple CLI based URL shortening application.
-
-
-I aim to continue the project in the future.
+</br>
 
 ## Authors
 
