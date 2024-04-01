@@ -28,7 +28,14 @@ func main() {
 }
 
 func shortenURL(w http.ResponseWriter, r *http.Request) {
+	originalURL := r.FormValue("url")
 
+	hash := hashURL(originalURL)
+	shortURL := hash[:6]
+
+	urlMap[shortURL] = originalURL
+
+	fmt.Fprintf(w, "Shortened URL: http://localhost:8080/%s", shortURL)
 }
 
 // redirectURL redirects a short URL to the original URL.
